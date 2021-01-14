@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const axios = require('axios')
-const { Media } = require('../models')
+const { Book } = require('../models')
 
 router.get('/omdb/:search', (req, res) => {
   axios.get(`http://www.omdbapi.com/?apikey=trilogy&s=${req.params.search}`)

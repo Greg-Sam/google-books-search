@@ -1,54 +1,62 @@
 import { useState } from 'react'
 import Typography from '@material-ui/core/Typography'
-import MediaAPI from '../../utils/MediaAPI'
+import BookAPI from '../../utils/BookAPI'
 import Form from '../../components/Form'
-import Media from '../../components/Media'
+import Book from '../../components/Book'
 
 const {
-  getMedia,
-  saveMedia
-} = MediaAPI
+  getBook,
+  saveBook
+} = BookAPI
 
 const Home = () => {
 
-  const [mediaState, setMediaState] = useState({
+  const [bookState, setBookState] = useState({
     search: '',
-    media: []
+    book: []
   })
 
   const handleInputChange = event => {
-    setMediaState({ ...mediaState, [event.target.name]: event.target.value })
+    setBookState({ ...bookState, [event.target.name]: event.target.value })
   }
 
   const handleSearchOMDB = event => {
     event.preventDefault()
-    getMedia(mediaState.search)
-      .then(({ data: media }) => {
-        setMediaState({ ...mediaState, media, search: '' })
+    getBook(bookState.search)
+      .then(({ data: book }) => {
+        setBookState({ ...bookState, book, search: '' })
       })
       .catch(err => console.error(err))
   }
 
- 
+  const handleSaveBook = imdbID => {
+    const newBook = bookState.book.filter(x => x.imdbID === imdbID)[0]
+    saveBook(newBook)
+      .then(() => {
+        let book = JSON.parse(JSON.stringify(bookState.book))
+        book = book.filter(x => x.imdbID !== imdbID)
+        setBookState({ ...bookState, book })
+      })
+  }
 
   return (
     <>
       <hr />
       <Typography variant="h6">
-        Search for Movies and TV Shows
+        Search and Save Books
       </Typography>
       <Form
-        search={mediaState.search}
+        search={bookState.search}
         handleInputChange={handleInputChange}
         handleSearchOMDB={handleSearchOMDB} />
         {
-          mediaState.media.length ? 
-          mediaState.media.map(media => (
-            <Media
-              key={media.imdbID}
-              media={media}
+          bookState.book.length ? 
+          bookState.book.map(book => (
+            <book
+              key={book.imdbID}
+              book={book}
               saved={false}
-              handleBtnClick={handleSaveMedia} />
+              handleBtnClick={handleSaveBook} />
           )) : null
         }
     </>
