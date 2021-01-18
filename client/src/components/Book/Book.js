@@ -15,10 +15,10 @@ const useStyles = makeStyles({
   },
 })
 
-const Media = props => {
+const Book = props => {
   const classes = useStyles()
   const {
-    media,
+    book,
     saved,
     handleBtnClick
   } = props
@@ -27,17 +27,17 @@ const Media = props => {
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
-        image={media.poster}
-        title={media.title} />
+        image={book.image}
+        title={book.title} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
-          {media.title}
+          {book.title}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          Year: {media.year}
+          Authors: {book.authors}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          Type: {media.type}
+          Description: {book.description}
         </Typography>
       </CardContent>
       <CardActions>
@@ -46,14 +46,14 @@ const Media = props => {
             <Button
               size="small"
               color="secondary"
-              onClick={() => handleBtnClick(media._id)}>
+              onClick={() => handleBtnClick(book._id)}>
               Delete
             </Button>
           ) : (
               <Button
                 size="small"
                 color="primary"
-                onClick={() => handleBtnClick(media.imdbID)}>
+                onClick={() => handleBtnClick(book.imdbID)}>
                 Save
               </Button>
             )
@@ -64,4 +64,4 @@ const Media = props => {
   )
 }
 
-export default Media
+export default Book

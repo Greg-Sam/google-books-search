@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 const BookAPI = {
-  getMedia: search => axios.get(`/api/omdb/${search}`),
-  getSavedMedia: () => axios.get('/api/media'),
-  saveMedia: media => axios.post('/api/media', media),
-  deleteMedia: id => axios.delete(`/api/media/${id}`) 
+  getBooks: search => axios.get(`/api/book/${search}`),
+  getSavedbooks: () => axios.get('/api/books'),
+  savebook: books => axios.post('/api/book', books),
+  deletebook: id => axios.delete(`/api/book/${id}`) 
 }
 
 export default BookAPI

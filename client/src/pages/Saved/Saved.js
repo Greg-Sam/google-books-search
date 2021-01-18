@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import Typography from '@material-ui/core/Typography'
-import MediaAPI from '../../utils/MediaAPI'
-import Media from '../../components/Media'
+import BookAPI from '../../utils/BookAPI'
+import Book from '../../components/Book'
 
 const {
-  getSavedMedia,
-  deleteMedia
-} = MediaAPI
+  getSavedBooks,
+  deleteBook
+} = BookAPI
 
 const Saved = () => {
 
@@ -15,16 +15,16 @@ const Saved = () => {
   })
 
   const handleDeleteSaved = id => {
-    deleteMedia(id)
+    deleteBook(id)
       .then(() => {
-        const saved = savedState.saved.filter(media => media._id !== id)
+        const saved = savedState.saved.filter(book => book._id !== id)
         setSavedState({ ...savedState, saved })
       })
       .catch(err => console.error(err))
   }
 
   useEffect(() => {
-    getSavedMedia()
+    getSavedBooks()
       .then(({ data: saved }) => {
         setSavedState({ ...savedState, saved })
       })
@@ -35,14 +35,14 @@ const Saved = () => {
     <>
       <hr />
       <Typography variant="h6">
-        Your Saved Media
+        Your Saved Books
       </Typography>
       {
         savedState.saved.length ? (
-          savedState.saved.map(media => (
-            <Media
-              key={media._id}
-              media={media}
+          savedState.saved.map(book => (
+            <Book
+              key={book._id}
+              book={book}
               saved={true}
               handleBtnClick={handleDeleteSaved} />
           ))

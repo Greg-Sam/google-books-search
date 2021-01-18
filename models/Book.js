@@ -5,5 +5,6 @@ module.exports = model('Book', new Schema({
   authors: String,
   description: String,
   image: String,
-  link: String
+  link: String,
+  gBookId: String
 }))

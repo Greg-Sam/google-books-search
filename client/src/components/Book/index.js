@@ -1,1 +1,1 @@
-export { default } from './Media.js'
+export { default } from './Book.js'

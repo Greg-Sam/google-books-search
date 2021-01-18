@@ -5,7 +5,7 @@ import Form from '../../components/Form'
 import Book from '../../components/Book'
 
 const {
-  getBook,
+  getBooks,
   saveBook
 } = BookAPI
 
@@ -22,7 +22,7 @@ const Home = () => {
 
   const handleSearchOMDB = event => {
     event.preventDefault()
-    getBook(bookState.search)
+    getBooks(bookState.search)
       .then(({ data: book }) => {
         setBookState({ ...bookState, book, search: '' })
       })
@@ -53,7 +53,7 @@ const Home = () => {
           bookState.book.length ? 
           bookState.book.map(book => (
             <book
-              key={book.imdbID}
+              key={book.bookID}
               book={book}
               saved={false}
               handleBtnClick={handleSaveBook} />

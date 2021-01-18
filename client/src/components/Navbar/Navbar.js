@@ -34,7 +34,7 @@ const Navbar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            My Watchlist
+            Search and Save Books
           </Typography>
           <Link to="/" className={classes.link}>
             <Button color="inherit">Home</Button>
