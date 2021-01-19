@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    
   },
   book: {
     height: 140,
@@ -25,10 +25,13 @@ const Book = props => {
   const {
     book,
     saved,
-    handleBtnClick
+    handleBtnClick,
+  
   } = props
 
   return (
+    <>
+    <hr/>
     <Card className={classes.root}>
       <CardMedia
         className={classes.book}
@@ -44,12 +47,13 @@ const Book = props => {
         <Typography variant="body2" color="textSecondary" component="p">
           Description: {book.description}
         </Typography>
-        <Button size="small" varient="enclosed"
-          color="primary">
-          More Info <Link to={book.link} className={classes.link}/>
-        </Button>
+      
       </CardContent>
       <CardActions>
+          
+            <Button color="primary"
+            href={book.link}>
+              More Info</Button>
         {
           saved ? (
             <Button
@@ -66,10 +70,12 @@ const Book = props => {
                 Save
               </Button>
             )
+            
         }
 
       </CardActions>
     </Card >
+    </>
   )
 }
 

@@ -29,6 +29,8 @@ const Home = () => {
       .catch(err => console.error(err))
   }
 
+  
+
   const handleSaveBook = gBookId => {
     const newBook = bookState.book.filter(x => x.gBookId === gBookId)[0]
     saveBook(newBook)
@@ -48,7 +50,8 @@ const Home = () => {
       <Form
         search={bookState.search}
         handleInputChange={handleInputChange}
-        handleSearchGBooks={handleSearchGBooks} />
+        handleSearchGBooks={handleSearchGBooks}
+      />
         {
           bookState.book.length ? 
           bookState.book.map(book => (
