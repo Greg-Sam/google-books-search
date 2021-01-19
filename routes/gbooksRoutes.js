@@ -2,7 +2,7 @@ const router = require('express').Router()
 const axios = require('axios')
 const { Book } = require('../models')
 
-router.get('/gbook/:search', (req, res) => {
+router.get('/gbooks/:search', (req, res) => {
   axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.search}`)
     .then(({ data: { items } }) => items.map(book => ({
       title: book.volumeInfo.title,

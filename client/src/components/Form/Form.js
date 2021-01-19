@@ -6,11 +6,11 @@ const Form = props => {
   const {
     search,
     handleInputChange,
-    handleSearchOMDB
+    handleSearchGBooks
   } = props
 
   return (
-    <form onSubmit={handleSearchOMDB}>
+    <form onSubmit={handleSearchGBooks}>
       <TextField
         label="Search"
         variant="outlined"
@@ -22,7 +22,7 @@ const Form = props => {
           variant="contained"
           color="primary"
           endIcon={<SearchIcon />}
-          onClick={handleSearchOMDB}>
+          onClick={handleSearchGBooks}>
           Search
         </Button>
       </p>

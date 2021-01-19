@@ -19,7 +19,7 @@ const Book = props => {
   const classes = useStyles()
   const {
     book,
-    saved,
+    handleSaveBook,
     handleBtnClick
   } = props
 
