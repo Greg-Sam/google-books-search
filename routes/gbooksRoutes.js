@@ -2,22 +2,20 @@ const router = require('express').Router()
 const axios = require('axios')
 const { Book } = require('../models')
 
-router.get('/book/:search', (req, res) => {
+router.get('/gbook/:search', (req, res) => {
   axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.search}`)
-    .then(({ data: { items } }) => {
-      console.log(items)
-      items.map(book => ({
-        title: items.volumeInfo.title,
-        authors: items.volumeInfo.authors,
-        description: items.volumeInfo.description,
-        image: items.volumeInfo.imageLinks.thumbnail,
-        link: items.volumeInfo.infoLink,
-        gBookId: items.id
-      }))
-    })
-    // .then(items => Book.find()
-    //   .then(books => items.filter(data => books.every(dbData.gBookId !== data.id))))
+    .then(({ data: { items } }) => items.map(book => ({
+      title: book.volumeInfo.title,
+      authors: book.volumeInfo.authors,
+      description: book.volumeInfo.description,
+      image: book.volumeInfo.imageLinks.thumbnail,
+      link: book.volumeInfo.infoLink,
+      gBookId: book.id
+    })))
+    .then(apiBooks => Book.find()
     // .then(books => res.json(books))
+      .then(books => apiBooks.filter(data => books.every(dbData => dbData.gBookId !== data.gBookId))))
+    .then(books => res.json(books))
     .catch(err => console.log(err))
 })
 
