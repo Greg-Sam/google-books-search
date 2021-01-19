@@ -13,7 +13,7 @@ const Home = () => {
 
   const [bookState, setBookState] = useState({
     search: '',
-    books: []
+    book: []
   })
 
   const handleInputChange = event => {
@@ -57,7 +57,8 @@ const Home = () => {
               book={book}
               saved={false}
               handleBtnClick={handleSaveBook} />
-          )) : null
+          )) 
+          : null
         }
     </>
   )

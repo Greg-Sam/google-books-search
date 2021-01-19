@@ -5,28 +5,33 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
   },
-  media: {
+  book: {
     height: 140,
   },
+  link: {
+    color: 'white',
+    textDecoration: 'none'
+  }
 })
 
 const Book = props => {
   const classes = useStyles()
   const {
     book,
-    handleSaveBook,
+    saved,
     handleBtnClick
   } = props
 
   return (
     <Card className={classes.root}>
       <CardMedia
-        className={classes.media}
+        className={classes.book}
         image={book.image}
         title={book.title} />
       <CardContent>
@@ -39,6 +44,10 @@ const Book = props => {
         <Typography variant="body2" color="textSecondary" component="p">
           Description: {book.description}
         </Typography>
+        <Button size="small" varient="enclosed"
+          color="primary">
+          More Info <Link to={book.link} className={classes.link}/>
+        </Button>
       </CardContent>
       <CardActions>
         {
@@ -53,7 +62,7 @@ const Book = props => {
               <Button
                 size="small"
                 color="primary"
-                onClick={() => handleBtnClick(book.imdbID)}>
+                onClick={() => handleBtnClick(book.gBookId)}>
                 Save
               </Button>
             )
