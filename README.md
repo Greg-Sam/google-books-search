@@ -14,13 +14,15 @@
   This is a web based app hosted on heroku.  No instalation is necessary, simply visit  https://arcane-crag-24658.herokuapp.com/ to start searching for books.
   ## Usage description
   Enter the book title, part of the book title, author name or any description of the book you are looking for to query the google books database.  
+![gbooks1](https://user-images.githubusercontent.com/71279945/105073473-f7174600-5a3b-11eb-82b2-b358f6002c12.PNG)
 
   The top ten hits will be returned.
+![gbooks2](https://user-images.githubusercontent.com/71279945/105073474-f7afdc80-5a3b-11eb-8b90-2049f2e87af9.PNG)
 
   You can click the 'More Info' button to get more details about the book or click the 'Save' button to save it to your personal collection.
 
   Click the 'Saved' link in the navbar to view your saved books.
-
+![gbooks3](https://user-images.githubusercontent.com/71279945/105073476-f7afdc80-5a3b-11eb-8f09-3ddee6e0c751.PNG)
   You can remove books from your saved list by clicking on the 'Delete' button.
 
  
